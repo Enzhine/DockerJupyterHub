@@ -2,8 +2,8 @@
 FROM python:3.9-bullseye
 
 # Arguments as mentioned in the task bonus
-ENV NOTEBOOKS_FROM=/shared
-ENV HUB_PATH=/hub
+ARG NOTEBOOKS_FROM=/shared
+ARG HUB_PATH=/hub
 
 # just a work dir
 WORKDIR ${HUB_PATH}
