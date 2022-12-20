@@ -2,7 +2,7 @@
 FROM python:3.9-bullseye
 
 # Arguments as mentioned in the task bonus
-## ENV NOTEBOOKS_FROM=/notebook
+ENV NOTEBOOKS_FROM=/shared
 ENV HUB_PATH=/hub
 
 # just a work dir
@@ -33,6 +33,10 @@ VOLUME /home
 
 # Config
 COPY jupyterhub_config.py jupyterhub_config.py
+
+# Adding notebooks
+COPY ${NOTEBOOKS_FROM} /home${NOTEBOOKS_FROM}
+RUN cd /etc/skel && ln -s /home${NOTEBOOKS_FROM} /etc/skel && chmod 777 /home${NOTEBOOKS_FROM} && chmod g+s /home${NOTEBOOKS_FROM}
 
 # Starting the Jupyter!
 CMD jupyterhub
