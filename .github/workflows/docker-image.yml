@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file /shared/Dockerfile --tag juphub:pipeline
+      run: docker build . --file /toBuild/Dockerfile --tag juphub:pipeline
     - name: Run the Docker image as container
       run: docker run -d juphub:pipeline
     - name: Push image to the Docker Hub
